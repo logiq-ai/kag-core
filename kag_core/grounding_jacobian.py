@@ -37,6 +37,7 @@ from dataclasses import asdict, dataclass
 
 import numpy as np
 import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 @dataclass
@@ -116,8 +117,6 @@ class GroundingAnalyzer:
 
         # Load model and tokenizer
         print(f"Loading {model_name} for grounding analysis...")
-        from transformers import AutoModelForCausalLM, AutoTokenizer
-
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
